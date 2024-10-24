@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserInfoDetails implements UserDetails {
 
@@ -17,8 +18,7 @@ public class UserInfoDetails implements UserDetails {
     public UserInfoDetails(UserInfo userInfo) {
         this.username = userInfo.getName(); // Assuming 'name' is used as 'username'
         this.password = userInfo.getPassword();
-        this.authorities = List.of(userInfo.getRoles().split(","))
-                .stream()
+        this.authorities = Stream.of(userInfo.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
@@ -40,21 +40,21 @@ public class UserInfoDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return true; // Implement your logic if you need this
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return true; // Implement your logic if you need this
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return true; // Implement your logic if you need this
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return true; // Implement your logic if you need this
     }
 }

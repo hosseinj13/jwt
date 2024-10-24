@@ -17,7 +17,8 @@ import java.util.function.Function;
 @Component
 public class JwtService {
 
-    public static final String SECRET = "fh4J9kdU7d2kdD8jd93Ksd92KdLz5sFjw9JskF2d9kdLk3d8fjKd8lJsk7fJsP2J";
+    // Replace this with a secure key in a real application, ideally fetched from environment variables
+    public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
     // Generate token with given user name
     public String generateToken(String userName) {
@@ -25,7 +26,7 @@ public class JwtService {
         return createToken(claims, userName);
     }
 
-    // Create a JWT token with specified claims and subject (user name)
+    // Create a JWT token with specified claims and subject (username)
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder()
                 .setClaims(claims)

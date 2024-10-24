@@ -4,7 +4,6 @@ import com.example.jwt.dto.AuthRequest;
 import com.example.jwt.model.UserInfo;
 import com.example.jwt.service.JwtService;
 import com.example.jwt.service.UserInfoService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,17 +13,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/auth")
 public class UserController {
 
-    private UserInfoService service;
+    private final UserInfoService service;
 
-    private JwtService jwtService;
+    private final JwtService jwtService;
 
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
     public UserController(UserInfoService service, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.service = service;
         this.jwtService = jwtService;
